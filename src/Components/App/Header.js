@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import styles from './Header.module.css';
 
-const Header = (props) => {
+const Header = props => {
   return (
-    <div className="app-header">
-      <h4>App header</h4>
+    <div className={styles.AppHeader}>
+      <button type="button" className="btn-toggle">Toggle Persons</button>
     </div>
-  )
-}
+  );
+};
 
 export default Header;
