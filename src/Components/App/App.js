@@ -12,10 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header
-          persons={this.state.persons}
-          showPersons={this.state.showPersons}
-        />
+        <Header />
 
         <Persons persons={this.state.persons} />
       </div>
