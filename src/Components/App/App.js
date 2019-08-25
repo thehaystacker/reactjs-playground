@@ -7,28 +7,40 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    console.log(" [App.js] constructor ");
+    // console.log(" [App.js] constructor ");
   }
 
   state = {
     persons: [{ name: "Sangeeth", age: 24 }, { name: "Sarath", age: 20 }],
-    showPersons: false
+    showPersons: false,
+    togglePersonsCount: 0
   };
 
-  UNSAFE_componentWillMount() {
-    console.log("[App.js] componentWillMount");
-  }
+  // UNSAFE_componentWillMount() {
+  //   console.log("[App.js] componentWillMount");
+  // }
 
-  componentDidMount() {
-    console.log("[App.js] componentDidMount");
-  }
+  // componentDidMount() {
+  //   console.log("[App.js] componentDidMount");
+  // }
 
   fnTogglePersons = () => {
     let showPersons = !this.state.showPersons;
 
-    this.setState({
-      showPersons
+    // this.setState({
+    //   showPersons,
+    //   togglePersonsCount: this.state.togglePersonsCount + 1
+    // });
+    
+    this.setState((prevState, props) => {
+      return {
+        showPersons,
+        togglePersonsCount: prevState.togglePersonsCount + 1
+      }
     });
+
+    console.log('[fnTogglePersons > togglePersonsCount]', this.state.togglePersonsCount);
+    
   };
 
   fnDeletePerson = idx => {
@@ -41,7 +53,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("[App.js] render");
+    // console.log("[App.js] render");
 
     let persons = null;
     if (this.state.showPersons) {

@@ -6,40 +6,40 @@ class Persons extends Component {
   constructor(props) {
     super(props);
 
-    console.log(" [Persons.js] constructor ");
+    // console.log(" [Persons.js] constructor ");
   }
 
-  UNSAFE_componentWillMount() {
-    console.log("[Persons.js] componentWillMount");
-  }
+  // UNSAFE_componentWillMount() {
+  //   console.log("[Persons.js] componentWillMount");
+  // }
 
-  componentDidMount() {
-    console.log("[Persons.js] componentDidMount");
-  }
+  // componentDidMount() {
+  //   console.log("[Persons.js] componentDidMount");
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("[Persons.js] componentWillReceiveProps", nextProps);
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("[Persons.js] componentWillReceiveProps", nextProps);
+  // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[Persons.js] shouldComponentUpdate nextProps", nextProps);
-    console.log("[Persons.js] shouldComponentUpdate this.props.persons", this.props.persons);
-    console.log("[Persons.js] shouldComponentUpdate nextState", nextState);
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("[Persons.js] shouldComponentUpdate nextProps", nextProps);
+  //   console.log("[Persons.js] shouldComponentUpdate this.props.persons", this.props.persons);
+  //   console.log("[Persons.js] shouldComponentUpdate nextState", nextState);
 
-    return true;
-  }
+  //   return true;
+  // }
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log("[Persons.js] componentWillUpdate nextProps", nextProps);
-    console.log("[Persons.js] componentWillUpdate nextState", nextState);
-  }
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log("[Persons.js] componentWillUpdate nextProps", nextProps);
+  //   console.log("[Persons.js] componentWillUpdate nextState", nextState);
+  // }
 
-  componentDidUpdate() {
-    console.log("[Persons.js] componentDidUpdate");
-  }
+  // componentDidUpdate() {
+  //   console.log("[Persons.js] componentDidUpdate");
+  // }
 
   render() {
-    console.log("[Persons.js] render");
+    // console.log("[Persons.js] render");
 
     let persons = this.props.persons.map((person, idx) => {
       return (
