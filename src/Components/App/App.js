@@ -31,16 +31,26 @@ class App extends Component {
     });
   };
 
+  fnDeletePerson = idx => {
+    console.log('[idx]', idx);
+
+    let persons = [...this.state.persons];
+    persons.splice(idx, 1);
+
+    this.setState({persons});
+  };
+
   render() {
     console.log("[App.js] render");
 
     let persons = null;
     if (this.state.showPersons) {
       persons = (
-          <Persons
-            persons={this.state.persons}
-            showPersons={this.state.showPersons}
-          />
+        <Persons
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+          eventDeletePersons={this.fnDeletePerson}
+        />
       );
     }
 

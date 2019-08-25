@@ -23,6 +23,7 @@ class Persons extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("[Persons.js] shouldComponentUpdate nextProps", nextProps);
+    console.log("[Persons.js] shouldComponentUpdate this.props.persons", this.props.persons);
     console.log("[Persons.js] shouldComponentUpdate nextState", nextState);
 
     return true;
@@ -42,7 +43,11 @@ class Persons extends Component {
 
     let persons = this.props.persons.map((person, idx) => {
       return (
-        <div className={styles.PersonCard} key={idx}>
+        <div
+          className={styles.PersonCard}
+          key={idx}
+          onClick={() => this.props.eventDeletePersons(idx)}
+        >
           <Person name={person.name} />
         </div>
       );
