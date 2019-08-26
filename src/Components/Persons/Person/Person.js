@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {AuthContext} from '../../App/App.js';
+
 class Person extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,9 @@ class Person extends Component {
 
     return (
       <div className="PersonCard">
+        <AuthContext.Consumer>
+         {auth => auth ? <p>I'm Authenticated</p> : ''}
+        </AuthContext.Consumer>
         <h4>{this.props.name}</h4>
       </div>
     )

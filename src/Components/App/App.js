@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "../Header/Header.js";
 import Persons from "../Persons/Persons.js";
 
+export const AuthContext = React.createContext(false);
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,8 @@ class App extends Component {
   state = {
     persons: [{ name: "Sangeeth", age: 24 }, { name: "Sarath", age: 20 }],
     showPersons: false,
-    togglePersonsCount: 0
+    togglePersonsCount: 0,
+    isAuthenticated: false
   };
 
   // UNSAFE_componentWillMount() {
@@ -31,26 +34,32 @@ class App extends Component {
     //   showPersons,
     //   togglePersonsCount: this.state.togglePersonsCount + 1
     // });
-    
+
     this.setState((prevState, props) => {
       return {
         showPersons,
         togglePersonsCount: prevState.togglePersonsCount + 1
-      }
+      };
     });
 
-    console.log('[fnTogglePersons > togglePersonsCount]', this.state.togglePersonsCount);
-    
+    console.log(
+      "[fnTogglePersons > togglePersonsCount]",
+      this.state.togglePersonsCount
+    );
   };
 
   fnDeletePerson = idx => {
-    console.log('[idx]', idx);
+    console.log("[idx]", idx);
 
     let persons = [...this.state.persons];
     persons.splice(idx, 1);
 
-    this.setState({persons});
+    this.setState({ persons });
   };
+
+  fnLoginBtn = () => {
+    this.setState({ isAuthenticated: true });
+  }
 
   render() {
     // console.log("[App.js] render");
@@ -58,17 +67,24 @@ class App extends Component {
     let persons = null;
     if (this.state.showPersons) {
       persons = (
-        <Persons
-          persons={this.state.persons}
-          showPersons={this.state.showPersons}
-          eventDeletePersons={this.fnDeletePerson}
-        />
+        <AuthContext.Provider value={this.state.isAuthenticated}>
+          <Persons
+            persons={this.state.persons}
+            showPersons={this.state.showPersons}
+            eventDeletePersons={this.fnDeletePerson}
+          />
+        </AuthContext.Provider>
       );
     }
 
     return (
       <div className="App" id="App">
-        <Header eventTogglePersons={this.fnTogglePersons} />
+        <AuthContext.Provider value={this.state.isAuthenticated}>
+          <Header
+            eventTogglePersons={this.fnTogglePersons}
+            eventLoginBtn={this.fnLoginBtn}
+          />
+        </AuthContext.Provider>
 
         {persons}
       </div>
