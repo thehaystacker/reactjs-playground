@@ -59,7 +59,7 @@ class App extends Component {
 
   fnLoginBtn = () => {
     this.setState({ isAuthenticated: true });
-  }
+  };
 
   render() {
     // console.log("[App.js] render");
