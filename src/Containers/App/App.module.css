@@ -1,0 +1,12 @@
+/* Common Styles */
+body {
+  color: rgb(83, 124, 154);
+}
+
+.builderWrap {
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(83, 124, 154, 0.1);
+  height: 100vh;
+  box-sizing: border-box;
+}
