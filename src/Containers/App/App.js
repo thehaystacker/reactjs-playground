@@ -12,7 +12,6 @@ const MainWrapper = styled.div`
   width: 50%;
   margin: 0 auto;
   color: rgb(68, 107, 138);
-
 `;
 
 class App extends Component {
