@@ -3,19 +3,21 @@ import React, { Component } from "react";
 import Burger from './Burger/Burger.js';
 import Controls from './Controls/Controls.js';
 
+import styles from './BurgerBuilder.module.css';
+
 class BurgerBuilder extends Component {
   state = {
     ingredients: {
-      salad: 0,
-      bacon: 0,
-      seeds: 0,
-      sausage: 0,
+      SALAD: 1,
+      BACON: 3,
+      SEEDS: 0,
+      SAUSAGE: 0,
     }
   }
   
   render() {
     return (
-      <div className="BurgerWrap">
+      <div className={styles.BurgerWrap}>
         <Burger ingredients={this.state.ingredients} />
         <Controls ingredients={this.state.ingredients} />
       </div>

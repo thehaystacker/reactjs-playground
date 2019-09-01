@@ -1,0 +1,43 @@
+.ingredient.topbread {
+  padding: 10px;
+  padding-top: 20px; 
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+}
+.ingredient.bottombread {
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+}
+.ingredient.seeds {
+  border-style: dotted;
+  border-radius: 50%;
+}
+.ingredient.salad {
+  border-style: double;
+}
+.ingredient.bacon {
+  border-style: dashed;
+  font-size: 12px;
+}
+.ingredient.sausage {
+  border-style: inset;
+}
+.ingredient p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.ingredient {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border-color: #5c839f;
+}
+.Burger {
+  width: 50%;
+}
