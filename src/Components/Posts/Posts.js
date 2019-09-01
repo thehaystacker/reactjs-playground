@@ -9,6 +9,13 @@ const PostsWrap = styled.div`
   .single-post {
     width: 33.33%;
     text-align: center;
+
+    :hover {
+      background-color: #496f8c;
+      color: #fff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
   }
 `;
 
