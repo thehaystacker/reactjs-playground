@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import validate from "./Validate";
+import "./App.css";
+
+import Counter from "../Components/Counter";
 
 class App extends Component {
-  state = {
-
-  }
+  state = {};
 
   render() {
     return (
       <div>
-        <p>Redux</p>
+        <Counter></Counter>
       </div>
     );
   }
