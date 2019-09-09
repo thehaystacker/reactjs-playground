@@ -1,47 +1,29 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class Counter extends Component {
   state = {
-    count: 0
-  };
-
-  eventIncrement = () => {
-    let count = this.state.count;
-    this.setState({ count: count + 1 });
-  };
-
-  eventDecrement = () => {
-    let count = this.state.count;
-    this.setState({ count: count - 1 });
-  };
-
-  eventAdd2 = () => {
-    let count = this.state.count;
-    this.setState({ count: count + 2 });
-  };
-
-  eventMinus5 = () => {
-    let count = this.state.count;
-    this.setState({ count: count - 5 });
+    addCount: 10,
+    subtractCount: 5
   };
 
   render() {
     return (
       <div>
-        <h4>Count : {this.state.count} </h4>
+        <h4>Count : {this.props.counter} </h4>
 
         <div>
-          <button type="button" onClick={this.eventIncrement}>
+          <button type="button" onClick={this.props.eventIncrement}>
             Increment
           </button>
-          <button type="button" onClick={this.eventDecrement}>
+          <button type="button" onClick={this.props.eventDecrement}>
             Decrement
           </button>
-          <button type="button" onClick={this.eventAdd2}>
-            Add 2
+          <button type="button" onClick={this.props.eventAddNum}>
+            Add {this.state.addCount}
           </button>
-          <button type="button" onClick={this.eventMinus5}>
-            Minus 5
+          <button type="button" onClick={this.props.eventSubtractNum}>
+            Minus {this.state.subtractCount}
           </button>
         </div>
       </div>
@@ -49,4 +31,22 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  };
+};
+
+const mapDispatchToAction = dispatch => {
+  return {
+    eventIncrement: () => dispatch({ type: "INCREMENT" }),
+    eventDecrement: () => dispatch({ type: "DECREMENT" }),
+    eventAddNum: () => dispatch({ type: "ADD", value: 10 }),
+    eventSubtractNum: () => dispatch({ type: "SUBTRACT", value: 5 })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToAction
+)(Counter);
