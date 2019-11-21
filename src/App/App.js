@@ -1,28 +1,84 @@
 import React, { Component } from "react";
-import './App.css';
+import "./App.css";
+
+import Textarea from '../FormElements/Textarea';
+import Select from '../FormElements/Select';
 
 class App extends Component {
-  state = {};
+  state = {
+    form: {
+      textbox: "",
+      textarea: "",
+      checkbox: "beginner",
+      radio: "male",
+      select: "option1"
+    },
+    selectOptions: [
+      { value: 'option1', name: 'Option 1' },
+      { value: 'option2', name: 'Option 2' },
+      { value: 'option3', name: 'Option 3' },
+      { value: 'option4', name: 'Option 4' },
+    ]
+  };
+
+  onChangeCB = (event, name) => {
+    console.log("[value]", event.target.value);
+    console.log("[name]", name);
+
+    let updatedForm = { ...this.state };
+
+    switch (name) {
+      case "TEXTBOX":
+        updatedForm.textbox = event.target.value;
+        break;
+
+      case "TEXTAREA":
+        updatedForm.textarea = event.target.value;
+        break;
+
+      default:
+        break;
+    }
+
+    this.setState({ form: updatedForm });
+  };
+
+  onFormSubmitCB = function(event) {
+    event.preventDefault();
+
+    console.log(event);
+  };
 
   render() {
     return (
       <div className="form-wrap">
-        <form action="#" method="POST">
+        <form action="#" method="POST" onSubmit={this.onFormSubmitCB}>
           <div className="frm-group">
-            <label htmlFor="">Textbox</label>
-            <input type="text" className="inp-txt" />
+            <label htmlFor="">Textbox : {this.state.form.textbox}</label>
+            <input
+              type="text"
+              className="inp-txt"
+              value={this.state.textbox}
+              onChange={event => this.onChangeCB(event, "TEXTBOX")}
+            />
           </div>
 
           <div className="frm-group">
-            <label htmlFor="">Textarea</label>
-            <textarea name="" id="" className="inp-textarea" rows="6"></textarea>
+            <label htmlFor="">Textarea: {this.state.form.textarea}</label>
+            <Textarea name="textarea" id="textarea" onChangeCB={this.onChangeCB} className="inp-textarea" />
           </div>
 
           <div className="frm-group">
             <label htmlFor="">Checkbox</label>
             <div className="inp-chk-wrap">
               <label htmlFor="">
-                <input type="checkbox" name="level" id="" value="beginner" />
+                <input
+                  type="checkbox"
+                  name="level"
+                  id=""
+                  value="beginner"
+                  defaultChecked={true}
+                />
                 Beginner
               </label>
             </div>
@@ -39,7 +95,12 @@ class App extends Component {
             </div>
             <div className="inp-chk-wrap">
               <label htmlFor="">
-                <input type="checkbox" name="level" id="" value="advanced" />
+                <input
+                  type="checkbox"
+                  name="level"
+                  id=""
+                  value="advanced"
+                />
                 Advanced
               </label>
             </div>
@@ -49,7 +110,7 @@ class App extends Component {
             <label htmlFor="">Radio</label>
             <div className="inp-rdo-wrap">
               <label htmlFor="">
-                <input type="radio" name="gender" value="male" />
+                <input type="radio" name="gender" value="male" defaultChecked="true" />
                 Male
               </label>
             </div>
@@ -63,11 +124,7 @@ class App extends Component {
 
           <div className="frm-group">
             <label htmlFor="">Textbox</label>
-            <select name="options" id="">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
+            <Select id="select" name="select" options={this.state.selectOptions} value="option3" onChangeCB={this.onChangeCB} />
           </div>
 
           <div className="frm-btn-grp">
