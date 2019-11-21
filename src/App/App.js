@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './App.css';
 
 class App extends Component {
   state = {};
@@ -14,7 +15,7 @@ class App extends Component {
 
           <div className="frm-group">
             <label htmlFor="">Textarea</label>
-            <textarea name="" id="" className="inp-textarea"></textarea>
+            <textarea name="" id="" className="inp-textarea" rows="6"></textarea>
           </div>
 
           <div className="frm-group">
