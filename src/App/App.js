@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Textarea from '../FormElements/Textarea';
-import Select from '../FormElements/Select';
+import Text from "../FormElements/Text";
+import Textarea from "../FormElements/Textarea";
+import Select from "../FormElements/Select";
+import Checkbox from "../FormElements/Checkbox";
+import Radio from "../FormElements/Radio";
 
 class App extends Component {
   state = {
@@ -14,117 +17,103 @@ class App extends Component {
       select: "option1"
     },
     selectOptions: [
-      { value: 'option1', name: 'Option 1' },
-      { value: 'option2', name: 'Option 2' },
-      { value: 'option3', name: 'Option 3' },
-      { value: 'option4', name: 'Option 4' },
+      { value: "option1", name: "Option 1" },
+      { value: "option2", name: "Option 2" },
+      { value: "option3", name: "Option 3" },
+      { value: "option4", name: "Option 4" }
+    ],
+    checkboxes: [
+      {name: 'beginner', value: 'Beginner'},
+      {name: 'intermediate', value: 'Intermediate'},
+      {name: 'advanced', value: 'Advanced'},
     ]
   };
 
   onChangeCB = (event, name) => {
-    console.log("[value]", event.target.value);
-    console.log("[name]", name);
+    // console.log("[value]", event.target.value);
+    // console.log("[name]", name);
 
-    let updatedForm = { ...this.state };
+    let form = { ...this.state.form };
+
+    console.log(" [form] ", form);
 
     switch (name) {
       case "TEXTBOX":
-        updatedForm.textbox = event.target.value;
+        form.textbox = event.target.value;
         break;
 
       case "TEXTAREA":
-        updatedForm.textarea = event.target.value;
+        form.textarea = event.target.value;
         break;
 
       default:
         break;
     }
 
-    this.setState({ form: updatedForm });
+    this.setState({ form });
   };
 
-  onFormSubmitCB = function(event) {
+  onFormSubmitCB = event => {
     event.preventDefault();
 
-    console.log(event);
+    console.log("[form]", this.state.form);
   };
 
   render() {
     return (
       <div className="form-wrap">
         <form action="#" method="POST" onSubmit={this.onFormSubmitCB}>
-          <div className="frm-group">
-            <label htmlFor="">Textbox : {this.state.form.textbox}</label>
-            <input
-              type="text"
-              className="inp-txt"
-              value={this.state.textbox}
-              onChange={event => this.onChangeCB(event, "TEXTBOX")}
-            />
-          </div>
+          <Text
+            label="Textbox"
+            placeholder="Textbox"
+            className="inp-txt"
+            value={this.state.textbox}
+            onChangeCB={this.onChangeCB}
+          />
 
-          <div className="frm-group">
-            <label htmlFor="">Textarea: {this.state.form.textarea}</label>
-            <Textarea name="textarea" id="textarea" onChangeCB={this.onChangeCB} className="inp-textarea" />
-          </div>
+          <Textarea
+            label="Textarea"
+            name="textarea"
+            id="textarea"
+            onChangeCB={this.onChangeCB}
+            className="inp-textarea"
+          />
 
           <div className="frm-group">
             <label htmlFor="">Checkbox</label>
-            <div className="inp-chk-wrap">
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  name="level"
-                  id=""
-                  value="beginner"
-                  defaultChecked={true}
-                />
-                Beginner
-              </label>
-            </div>
-            <div className="inp-chk-wrap">
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  name="level"
-                  id=""
-                  value="intermediate"
-                />
-                Intermediate
-              </label>
-            </div>
-            <div className="inp-chk-wrap">
-              <label htmlFor="">
-                <input
-                  type="checkbox"
-                  name="level"
-                  id=""
-                  value="advanced"
-                />
-                Advanced
-              </label>
-            </div>
+            <Checkbox name="level" value="beginner" checked={true} title="Beginner" />
+            <Checkbox name="level" value="intermediate" checked={false} title="Intermediate" />
+            <Checkbox name="level" value="advanced" checked={false} title="Advanced" />
           </div>
 
           <div className="frm-group">
             <label htmlFor="">Radio</label>
-            <div className="inp-rdo-wrap">
-              <label htmlFor="">
-                <input type="radio" name="gender" value="male" defaultChecked="true" />
-                Male
-              </label>
-            </div>
-            <div className="inp-rdo-wrap">
-              <label htmlFor="">
-                <input type="radio" name="gender" value="female" />
-                Female
-              </label>
-            </div>
+            <Radio
+              name="gender"
+              className="inp-radio"
+              label="Male"
+              value="male"
+              checked={false}
+              id="inp-rdo-male"
+            />
+            <Radio
+              name="gender"
+              className="inp-radio"
+              label="Female"
+              value="female"
+              checked={true}
+              id="inp-rdo-female"
+            />
           </div>
 
           <div className="frm-group">
             <label htmlFor="">Textbox</label>
-            <Select id="select" name="select" options={this.state.selectOptions} value="option3" onChangeCB={this.onChangeCB} />
+            <Select
+              name="select"
+              options={this.state.selectOptions}
+              value="option3"
+              onChangeCB={this.onChangeCB}
+            />
           </div>
 
           <div className="frm-btn-grp">
