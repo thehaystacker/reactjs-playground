@@ -1,0 +1,14 @@
+LIST AND CONDITIONS
+
+[]Rendering the contents conditionally
+[]Outputting the list using map method and assigning key prop to the parent
+[]Passing method and props to the element
+[]Updating state immutably
+
+STYLING COMPONENTS
+[]Creating inline styles inside render method
+[]Setting inline styles dynamically
+[]Using ‘radium’ package along with inline styles
+[]Creating media queries using radium
+[]Using CSS modules
+[]
