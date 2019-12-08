@@ -1,3 +1,5 @@
+
+
 LIST AND CONDITIONS
 []Rendering the contents conditionally
 []Outputting the list using map method and assigning key prop to the parent
