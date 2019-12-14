@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Counter.css';
 import { connect } from "react-redux";
 
 class Counter extends Component {
