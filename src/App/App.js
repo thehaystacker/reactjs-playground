@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Counter from "../Components/Counter";
+import Counter from "../Components/Counter/Counter.js";
 
 class App extends Component {
   state = {};
