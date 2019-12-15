@@ -13,6 +13,7 @@
 
 .action-btns {
   text-align: center;
+  margin-top: 1em;
 }
 .btn-actions:last-child {
   margin: 0;
@@ -32,4 +33,28 @@
 }
 .btn-actions:hover, .btn-actions:active, .btn-actions:focus {
   background-color: #f0f0f0;
+}
+
+.results ul {
+  text-align: center;
+  margin-top: 2em;
+}
+.results ul li {
+  display: inline-block;
+  font-weight: 600;
+  font-family: monospace;
+  position: relative;
+  margin-right: 40px;
+  cursor: pointer;
+}
+.results ul li:hover {
+  background-color: red;
+  color: #fff;
+}
+.results ul li::before {
+  position: absolute;
+  content: '💡';
+  font-size: 15px;
+  left: -15px;
+  top: 0;
 }

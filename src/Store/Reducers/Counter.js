@@ -1,34 +1,40 @@
+import * as ActionTypes from "../Actions/Types";
+
 const initialState = {
   counter: 0,
   btnAddCount: 5,
   btnSubtractCount: 10,
 };
 
-const reducer = (state = initialState, action) => {
+const reducerCounter = (state = initialState, action) => {
   let updatedState = { ...state };
   let counter = updatedState.counter;
 
   switch (action.type) {
-    case "INCREMENT":
+    case ActionTypes.INCREMENT:
       updatedState.counter = counter + 1;
       break;
 
-    case "ADD":
+    case ActionTypes.ADD:
       updatedState.counter = counter + state.btnAddCount;
       break;
 
-    case "DECREMENT":
+    case ActionTypes.DECREMENT:
       updatedState.counter = counter - 1;
       break;
 
-    case "SUBTRACT":
+    case ActionTypes.SUBTRACT:
       updatedState.counter = counter - state.btnSubtractCount;
       break;
 
     default:
+      updatedState = state;
       break;
   }
+
+  //   console.log('[updatedState]', updatedState);
+
   return updatedState;
 };
 
-export default reducer;
+export default reducerCounter;

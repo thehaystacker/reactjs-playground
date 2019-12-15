@@ -1,9 +1,22 @@
 import React, { Component } from "react";
-import './Counter.css';
+import "./Counter.css";
 import { connect } from "react-redux";
+
+import * as Actions from "../../Store/Actions/Actions";
 
 class Counter extends Component {
   render() {
+    let resultsUl = null;
+    if (this.props.results && this.props.results.length) {
+      resultsUl = this.props.results.map((item, i) => {
+        return (
+          <li key={i} onClick={() => this.props.cbDeleteResult(i)}>
+            {item}
+          </li>
+        );
+      });
+    }
+
     return (
       <div className="counter">
         <p className="txt-counter">{this.props.counter}</p>
@@ -15,10 +28,7 @@ class Counter extends Component {
             Increment
           </button>
 
-          <button
-            className="btn-actions"
-            onClick={this.props.cbAddCounter}
-          >
+          <button className="btn-actions" onClick={this.props.cbAddCounter}>
             Add {this.props.btnAddCount}
           </button>
 
@@ -36,6 +46,19 @@ class Counter extends Component {
             Subtract {this.props.btnSubtractCount}
           </button>
         </div>
+
+        <div className="action-btns">
+          <button
+            className="btn-actions"
+            onClick={() => this.props.cbStoreResult(this.props.counter)}
+          >
+            Store Result
+          </button>
+        </div>
+
+        <div className="results">
+          <ul>{resultsUl}</ul>
+        </div>
       </div>
     );
   }
@@ -43,18 +66,21 @@ class Counter extends Component {
 
 const mapStateToProps = state => {
   return {
-    counter: state.counter,
-    btnAddCount: state.btnAddCount,
-    btnSubtractCount: state.btnSubtractCount,
+    counter: state.counter.counter,
+    btnAddCount: state.counter.btnAddCount,
+    btnSubtractCount: state.counter.btnSubtractCount,
+    results: state.results.results
   };
 };
 
 const mapDispatchToAction = dispatch => {
   return {
-    cbIncrementCounter: () => dispatch({ type: "INCREMENT" }),
-    cbAddCounter: () => dispatch({ type: "ADD" }),
-    cbDecrementCounter: () => dispatch({ type: "DECREMENT" }),
-    cbSubtractCounter: () => dispatch({ type: "SUBTRACT" })
+    cbIncrementCounter: () => dispatch(Actions.increment()),
+    cbAddCounter: () => dispatch(Actions.add()),
+    cbDecrementCounter: () => dispatch(Actions.decrement()),
+    cbSubtractCounter: () => dispatch(Actions.subtract()),
+    cbStoreResult: (counter) => dispatch(Actions.storeResult(counter)),
+    cbDeleteResult: idx => dispatch(Actions.deleteResult(idx))
   };
 };
 
