@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Counter.css";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import * as Actions from "../../Store/Actions/Actions";
 
@@ -15,6 +16,42 @@ class Counter extends Component {
           </li>
         );
       });
+    }
+
+    let cardPlaceholders = [];
+    for (let i = 0; i < 8; i++) {
+      cardPlaceholders.push(
+        <div className="card" key={i}>
+          <div className="card-box">
+            <div className="card-meta"></div>
+          </div>
+        </div>
+      );
+    }
+
+    let animeCards = <div className="plch-card">{cardPlaceholders}</div>;
+
+    if (this.props.animeChars) {
+      animeCards = (
+        <div className="plch-card">
+          {this.props.animeChars.map((anime, i) => {
+            return (
+              <div className="card" key={anime.mal_id}>
+                <div className="card-box">
+                  <div
+                    className="card-img"
+                    style={{ backgroundImage: `url(${anime.image_url})` }}
+                  ></div>
+                  <div className="card-meta">
+                    <p className="title">{anime.title}</p>
+                    <p className="type">{anime.type}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
     }
 
     return (
@@ -59,9 +96,32 @@ class Counter extends Component {
         <div className="results">
           <ul>{resultsUl}</ul>
         </div>
+
+        <div className="anime-cards-wrap">{animeCards}</div>
       </div>
     );
   }
+
+  componentDidMount = () => {
+    axios
+      .get("https://api.jikan.moe/v3/search/anime?q=pokemon&limit=16")
+      .then(response => {
+        console.log("[response]", response);
+
+        if (response.status === 200) {
+          let { results } = response.data;
+
+          console.log("[results]", results);
+
+          if (results && results.length) {
+            this.props.cbSaveAnimeChars(results);
+          }
+        }
+      })
+      .catch(error => {
+        console.log("[error]", error);
+      });
+  };
 }
 
 const mapStateToProps = state => {
@@ -69,7 +129,8 @@ const mapStateToProps = state => {
     counter: state.counter.counter,
     btnAddCount: state.counter.btnAddCount,
     btnSubtractCount: state.counter.btnSubtractCount,
-    results: state.results.results
+    results: state.results.results,
+    animeChars: state.counter.animeChars
   };
 };
 
@@ -79,8 +140,9 @@ const mapDispatchToAction = dispatch => {
     cbAddCounter: () => dispatch(Actions.add()),
     cbDecrementCounter: () => dispatch(Actions.decrement()),
     cbSubtractCounter: () => dispatch(Actions.subtract()),
-    cbStoreResult: (counter) => dispatch(Actions.storeResult(counter)),
-    cbDeleteResult: idx => dispatch(Actions.deleteResult(idx))
+    cbStoreResult: counter => dispatch(Actions.storeResult(counter)),
+    cbDeleteResult: idx => dispatch(Actions.deleteResult(idx)),
+    cbSaveAnimeChars: response => dispatch(Actions.saveAnimeChars(response))
   };
 };
 

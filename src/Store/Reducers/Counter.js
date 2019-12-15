@@ -4,6 +4,7 @@ const initialState = {
   counter: 0,
   btnAddCount: 5,
   btnSubtractCount: 10,
+  animeChars: null
 };
 
 const reducerCounter = (state = initialState, action) => {
@@ -27,12 +28,16 @@ const reducerCounter = (state = initialState, action) => {
       updatedState.counter = counter - state.btnSubtractCount;
       break;
 
+    case ActionTypes.SAVE_ANIME_CHARS:
+      updatedState.animeChars = action.response;
+      break;
+
     default:
       updatedState = state;
       break;
   }
 
-  //   console.log('[updatedState]', updatedState);
+//   console.log("[updatedState]", updatedState);
 
   return updatedState;
 };

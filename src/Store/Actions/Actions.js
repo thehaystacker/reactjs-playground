@@ -41,3 +41,12 @@ export const deleteResult = idx => {
     idx
   };
 };
+
+export const saveAnimeChars = (response) => {
+  return dispatch => {
+      dispatch({
+          type: ActionTypes.SAVE_ANIME_CHARS,
+          response
+      })
+  };
+};
