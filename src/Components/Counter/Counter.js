@@ -23,7 +23,20 @@ class Counter extends Component {
       cardPlaceholders.push(
         <div className="card" key={i}>
           <div className="card-box">
-            <div className="card-meta"></div>
+            <div
+              className="plch-box"
+              style={{ width: "100%", height: "70%" }}
+            ></div>
+            <div className="card-meta">
+              <div
+                className="plch-box"
+                style={{ width: "70%", height: "20px", marginBottom: "10px" }}
+              ></div>
+              <div
+                className="plch-box"
+                style={{ width: "40%", height: "10px" }}
+              ></div>
+            </div>
           </div>
         </div>
       );
