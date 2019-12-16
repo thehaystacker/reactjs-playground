@@ -1,56 +1,8 @@
-/* Common Styles */
-body {
-}
 
-.form-wrap {
-  width: 30%;
-  margin: 2em auto 0 ;
+body, ul, li, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
 }
-.frm-group {
-  margin-bottom: 20px;
-}
-.frm-group label {
-  display: block;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #676b79;
-  margin-bottom: 5px;
-}
-.inp-txt, .inp-textarea {
-  width: 100%;
-  border: 1px solid #676b79;
-  border-radius: 3px;
-  padding: 5px 20px;
-  outline: none;
-  font-size: 15px;
-  color: #676b79;
-}
-.inp-txt {
-  height: 26px;
-}
-.inp-textarea {
-  resize: none;
-}
-.inp-chk-wrap label, .inp-rdo-wrap label {
-  font-size: 11px;
-  text-transform: none;
-}
-.inp-chk-wrap:last-child, .inp-rdo-wrap:last-child {
-  margin-right: 0;
-}
-.inp-chk-wrap, .inp-rdo-wrap {
-  display: inline-block;
-  margin-right: 15px;
-}
-.frm-btn {
-  border: 1px solid #676a79;
-  background-color: #676a79;
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 40px;
-  font-size: 15px;
-  text-transform: uppercase;
-  border-radius: 3px;
-  cursor: pointer;
+li {
+  list-style: none;
 }
