@@ -2,29 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App/App";
+import createSagaMiddleware from "redux-saga";
 import * as serviceWorker from "./serviceWorker";
-
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 
-import reducerCounter from "./Store/Reducers/Counter";
-import reducerResults from "./Store/Reducers/Results";
-
-// USING REDUX-THUNK
-// import thunk from 'redux-thunk';
+import rootReducer from "./Store/Reducers";
 
 // USING REDUX-SAGA
-import createSagaMiddleware from 'redux-saga'
 const sagaMiddleware = createSagaMiddleware();
 
-const reducer = combineReducers({
-  counter: reducerCounter,
-  results: reducerResults
-});
+const reducer = combineReducers({ rootReducer });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
+const store = createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(sagaMiddleware))
+);
 
 ReactDOM.render(
   <Provider store={store}>
