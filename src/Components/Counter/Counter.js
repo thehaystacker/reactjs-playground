@@ -65,8 +65,23 @@ class Counter extends Component {
   }
 
   componentDidMount = () => {
-    return;
+
+    function* sayHi() {
+      yield 'Hello';
+      yield 'world';
+      return '!';
+    }
+
+    console.log(sayHi())
+
+    const person = {name: 'sangeeth', age: '24'}
+
+    for (const iterator of Object.keys(person)) {
+      console.log(person[iterator]);
+    }
     
+    return;
+
     axios
       .get("https://api.jikan.moe/v3/search/anime?q=pokemon&limit=16")
       .then(response => {
