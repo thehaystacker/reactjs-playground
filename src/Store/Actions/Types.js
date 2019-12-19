@@ -1,1 +1,0 @@
-export const SAVE_ANIME_CHARS = 'SAVE_ANIME_CHARS';
