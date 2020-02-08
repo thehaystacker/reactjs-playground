@@ -22,5 +22,6 @@
 
 QUESTIONS
 1. how to install the create-react-cli using yarn
+Ans: https://classic.yarnpkg.com/en/docs/cli/create/
 
 COMMENTS
