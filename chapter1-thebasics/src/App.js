@@ -15,6 +15,7 @@ class App extends Component {
         <Person />
         <Person
           cbInputOnchange={(event) => this.fnInputOnchange(event, 'somevalue')}
+          defaultValue="sangeeth"
         />
         <Person />
       </div>
