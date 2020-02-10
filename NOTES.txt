@@ -1,4 +1,4 @@
-CHAPTER 1 - THE BASICS
+CHAPTER 3 - THE BASICS
 
 1. Instlling the create-react-app globally using :
     npm install -g create-react-app
@@ -28,5 +28,9 @@ Ans: https://classic.yarnpkg.com/en/docs/cli/create/
 
 // comments
 
-CHAPTER 2 - LIST AND CONDITIONALS
+CHAPTER 4 - LIST AND CONDITIONALS
 
+1. Rendering conditionally
+2. Rendering the list
+3. Deleting person on click
+4. Two way binding 
