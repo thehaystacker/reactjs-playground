@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import radium from 'radium';
-import "./App.css";
+import styles from "./App.module.css";
 import Person from "./components/person";
 
 class App extends Component {
@@ -87,7 +87,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App" style={elAppStyle}>
+      <div className={styles.App} style={elAppStyle}>
         <button
           className={btnToggleClass}
           style={btnToggleStyle}
