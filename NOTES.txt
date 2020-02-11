@@ -34,3 +34,9 @@ CHAPTER 4 - LIST AND CONDITIONALS
 2. Rendering the list
 3. Deleting person on click
 4. Two way binding 
+
+CHAPTER 5 - STYLING COMPONENTS
+1. Dynamic styling
+2. Dynamic css classes
+3. Using radium package for media queries and hover
+4. Module css
