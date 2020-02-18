@@ -45,3 +45,5 @@ CHAPTER 7 - REACT COMPONENTS
 1. Component creation lifecycle Ghooks
 2. Component update lifecycle hooks
 3. PureComponent
+4. Using HOC
+5. Using setState correctly
