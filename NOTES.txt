@@ -48,3 +48,7 @@ CHAPTER 7 - REACT COMPONENTS
 4. Using HOC
 5. Using setState correctly
 6. Understanding HOC 
+7. Validating props using prop-types package (PropTypes)
+8. Using ref (references)
+9. Using forwardRef
+10. Using context API
