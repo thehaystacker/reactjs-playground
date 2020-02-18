@@ -47,3 +47,4 @@ CHAPTER 7 - REACT COMPONENTS
 3. PureComponent
 4. Using HOC
 5. Using setState correctly
+6. Understanding HOC 
