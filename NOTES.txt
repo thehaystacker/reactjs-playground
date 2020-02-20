@@ -52,3 +52,5 @@ CHAPTER 7 - REACT COMPONENTS
 8. Using ref (references)
 9. Using forwardRef
 10. Using context API
+11. The new lifecycle hooks introduced in react 16
+12. Using React.memo() to stop re-rendering the dom
