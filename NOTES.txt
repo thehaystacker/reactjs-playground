@@ -42,7 +42,7 @@ CHAPTER 5 - STYLING COMPONENTS
 4. Module css
 
 CHAPTER 7 - REACT COMPONENTS
-1. Component creation lifecycle Ghooks
+1. Component creation lifecycle hooks
 2. Component update lifecycle hooks
 3. PureComponent
 4. Using HOC
