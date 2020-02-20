@@ -1,37 +1,40 @@
 import React, { Component } from "react";
-import List from './list';
-import './user.css';
+import "./user.css";
 
 class User extends Component {
-    constructor (props) {
-        // console.log('[User.js > constructor]');
-        
-        super(props);
-      }
-      
-      state = {};
-    
-      componentWillMount () {
-        // console.log('[User.js > componentWillMount]');
-        
-      }
-    
-      componentDidMount () {
-        // console.log('[User.js > componentDidMount]');
-        
-      }
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+
+    console.log("[User CREATE > constructor]");
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[User > getDerivedStateFromProps]");
+
+    return null;
+  }
+
+  componentDidMount() {
+    console.log("[User CREATE > componentDidMount]");
+  }
+
+  componentDidUpdate() {
+    console.log("[User UPDATE > componentDidUpdate]");
+  }
+
   render() {
-    // console.log('[User.js > render]');
+    console.log("[User > render]");
 
     return (
       <div className="cmp-user">
         <h1>User</h1>
 
-        <List number="1" />
-        <List number="2" />
+        <p>{this.props.isUpdated ? "Updated" : "Not Updated "}</p>
       </div>
     );
   }
 }
 
-export default User;
+export default React.memo(User);
