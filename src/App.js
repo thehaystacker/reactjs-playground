@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import User from "./components/user/user";
+import PropTypes from "prop-types";
 
 class App extends Component {
   constructor(props) {
