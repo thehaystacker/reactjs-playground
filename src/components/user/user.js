@@ -1,12 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import "./user.css";
 import PropTypes from "prop-types";
 
-class User extends Component {
+class User extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.refInputText = React.createRef();
+  }
 
   componentDidMount () {
-    if (this.props.idx === 2) {
-      this.refInputText.focus();
+    if (this.props.idx === 1) {
+      this.refInputText.current.focus();
     }
   }
   
@@ -23,9 +28,7 @@ class User extends Component {
           type="text"
           value={name}
           onChange={event => this.props.cbChangeUsername(event, idx)}
-          ref={inp => {
-            this.refInputText = inp;
-          }}
+          ref={this.refInputText}
         />
       </div>
     );
