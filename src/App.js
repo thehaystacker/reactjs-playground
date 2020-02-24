@@ -1,65 +1,47 @@
 import React, { Component } from "react";
 import "./App.css";
 import User from "./components/user/user";
-import PropTypes from "prop-types";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isUpdated: false
+      isUpdated: false,
+      users: [
+        {
+          name: "user 1",
+          age: 24
+        },
+        {
+          name: "user 2",
+          age: '24'
+        },
+        {
+          name: "user 3",
+          age: 23
+        }
+      ]
     };
 
     console.log("[App CREATE > constructor]");
   }
 
-  static getDerivedStateFromProps(props, state) {
-    console.log("[App > getDerivedStateFromProps]");
-
-    return null;
-  }
-
-  componentDidMount() {
-    console.log("[App CREATE > componentDidMount]");
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[App UPDATE > shouldComponentUpdate]");
-
-    return this.state.isUpdated !== nextState.isUpdated;
-  }
-
-  // getSnapshotBeforeUpdate() {
-  //   console.log("[App UPDATE > getSnapshotBeforeUpdate]");
-  // }
-
-  componentDidUpdate() {
-    console.log("[App UPDATE > componentDidUpdate]");
-  }
-
-  cbChangeState = () => {
-    this.setState(prevState => {
-      return {
-        isUpdated: true
-      };
-    });
-  };
-
   render() {
-    console.log("[App > render]");
+    let users = null;
+    if (this.state.users && this.state.users.length) {
+      users = this.state.users.map((user, index) => {
+        return (
+          <User
+            key={index}
+            isUpdated={this.state.isUpdated}
+            data={user}
+          />
+        );
+      });
+    }
 
-    return (
-      <div className="App">
-        <h1>App</h1>
-        <button type="button" onClick={this.cbChangeState}>
-          Change State
-        </button>
-        <hr />
-
-        <User isUpdated={this.state.isUpdated} />
-      </div>
-    );
+    return <div className="App">{users}</div>;
   }
 }
 
