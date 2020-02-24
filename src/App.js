@@ -15,7 +15,7 @@ class App extends Component {
         },
         {
           name: "user 2",
-          age: '24'
+          age: 24
         },
         {
           name: "user 3",
@@ -23,18 +23,33 @@ class App extends Component {
         }
       ]
     };
-
-    console.log("[App CREATE > constructor]");
   }
+
+  cbChangeUsername = (event, index) => {
+    let name = event.target.value;
+    
+    this.setState((prevState, props) => {
+      let users = [...prevState.users];
+      users[index].name = name;
+      
+      return {
+        users: users
+      };
+    });
+
+    console.log(this.state.users);
+  };
 
   render() {
     let users = null;
     if (this.state.users && this.state.users.length) {
-      users = this.state.users.map((user, index) => {
+      users = this.state.users.map((user, idx) => {
         return (
           <User
-            key={index}
+            key={idx}
+            idx={idx}
             isUpdated={this.state.isUpdated}
+            cbChangeUsername={this.cbChangeUsername}
             data={user}
           />
         );
