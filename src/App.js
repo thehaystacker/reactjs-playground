@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
-import User from "./components/user/user";
+import Header from "./components/Header";
+import Users from "./components/Users";
+
+export const ContextUsers = React.createContext();
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isUpdated: false,
+        isUpdated: true,
       users: [
         {
           name: "user 1",
@@ -23,40 +26,33 @@ class App extends Component {
         }
       ]
     };
+
+    this.refUserComponent = React.createRef();
   }
 
-  cbChangeUsername = (event, index) => {
-    let name = event.target.value;
-    
-    this.setState((prevState, props) => {
-      let users = [...prevState.users];
-      users[index].name = name;
-      
-      return {
-        users: users
-      };
-    });
-
+  cbChangeUsername = () => {
     console.log(this.state.users);
   };
 
-  render() {
-    let users = null;
-    if (this.state.users && this.state.users.length) {
-      users = this.state.users.map((user, idx) => {
-        return (
-          <User
-            key={idx}
-            idx={idx}
-            isUpdated={this.state.isUpdated}
-            cbChangeUsername={this.cbChangeUsername}
-            data={user}
-          />
-        );
-      });
-    }
+  cbDeleteUser = () => {
+    console.log("[cbDeleteUser]");
+  };
 
-    return <div className="App">{users}</div>;
+  render() {
+    return (
+      <div className="App">
+        <Header></Header>
+        <ContextUsers.Provider
+          value={{
+            isUpdated: this.state.isUpdated,
+            users: this.state.users,
+            cbDeleteUser: this.cbDeleteUser
+          }}
+        >
+          <Users></Users>
+        </ContextUsers.Provider>
+      </div>
+    );
   }
 }
 
