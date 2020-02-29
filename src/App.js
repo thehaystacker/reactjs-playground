@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Users from "./components/Users";
 
-export const ContextUsers = React.createContext();
+import ContextUsers from './components/WithContext';
 
 class App extends Component {
   constructor(props) {

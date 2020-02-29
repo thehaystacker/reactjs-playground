@@ -1,13 +1,11 @@
 import React from "react";
-import { ContextUsers } from "../App";
+import ContextUsers from './WithContext';
 
 class UserList extends React.Component {
-      static contextType = ContextUsers;
+  static contextType = ContextUsers;
 
   render() {
-        let value = this.context;
-
-    console.log("[value]", value);
+    console.log("[this.context]", this.context);
 
     return null;
   }
